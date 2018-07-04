@@ -1,0 +1,22 @@
+
+
+    <div class="card-columns mx-auto">
+        <div 
+        class="card h-100 m-2" 
+        *ngFor = "let question of questions">
+            <!-- <img class="card-img-top" src=".../100px200/" alt="Card image cap"> -->
+            <div class="card-body question-card-body" (click)="onSelectQuestion(question)">
+              <h5 class="card-title">{{question.name}}</h5>
+              <p class="card-text">{{question.description}}</p>
+              <p class="card-text">
+                  <small class="text-muted">
+                  Last updated 3 mins ago
+                </small></p>
+            </div>
+            <div class="card-footer">
+                <small> Tags :</small> 
+                <span class="badge badge-warning m-1" *ngFor="let tag of question.tags">{{tag}}</span>    
+            </div>
+        </div>
+
+    </div>

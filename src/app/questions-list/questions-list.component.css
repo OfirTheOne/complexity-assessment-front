@@ -1,0 +1,9 @@
+div.question-card-body {
+    cursor: pointer;
+    
+}
+
+div.question-card:hover {
+    border: 3px bold gray !important;
+    
+}

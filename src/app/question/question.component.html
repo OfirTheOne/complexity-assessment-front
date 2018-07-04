@@ -1,0 +1,50 @@
+
+<h2 class="display-3 mb-4" >{{selectedQuestion?.name}}</h2>
+
+<h4 class="lead">Description</h4>
+<p class="mb-4">
+  {{selectedQuestion?.description}}
+</p>
+
+<h4 class="lead">Complexity</h4>
+<p class="mb-4">
+    {{selectedQuestion?.expectedComplexity}}
+</p>
+
+<h4 class="lead">Exemples</h4>
+<div *ngFor="let exemple of selectedQuestion?.exemples">
+  <div class="exemple-block p-2 mb-2 w-75">
+    <span class="exemple-text">
+        <!-- badge badge-secondary -->
+        Input : {{exemple.input}}, Output : {{exemple.output}}
+    </span> 
+  </div>
+</div>
+
+<div class="mr-4 mt-4 mb-4 w-75" id="codeEditor" #codeEditor> </div>
+
+<button type="button" class="btn btn-light">Reset</button>
+
+<button type="button" class="btn btn-secondary">Run code</button>
+
+<button type="button" class="btn btn-warning" (click)="onSubmitFinalCode()">Submit code</button>
+
+
+<!-- The result / error part -->
+
+<div *ngIf= "analysisResult != undefined">
+  <!-- error -->
+  <div *ngIf= "analysisResult.isError">
+    <h3>Error</h3>
+    <p>{{analysisResult.result.errorMessage}}</p>
+  </div>
+
+  <!-- result -->
+  <div *ngIf= "!analysisResult.isError">
+      <h3>Result</h3>
+      <p>{{analysisResult.result.resultComplexity | complexity}}</p>
+
+  </div>
+  
+
+</div>

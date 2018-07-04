@@ -1,0 +1,26 @@
+
+#codeEditor { 
+    /* position: relative; */
+    min-height: 150px;
+    border: lightgrey solid 1px;
+    border-radius: 10px;
+}
+
+  .exemple-block {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .exemple-text {
+    font-family: 
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "Courier New",
+    "monospace";
+    font-size: 0.9em;
+  }
+
+  /* for loading spinner*/
+
+
