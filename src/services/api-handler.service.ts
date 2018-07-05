@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment.prod';
+import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,7 +20,7 @@ export class ApiHandlerService {
     }
 
     public async postQuestionCode(questionId: string, code: string) {
-        const queryUrl = /*environment.api_url */ 'http://localhost:3000/' + 'analysis/';
+        const queryUrl = environment.api_url + 'analysis/';
         const requestBody = {
             id: questionId,
             code
