@@ -111,5 +111,11 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public onResetCodeEditor() {
+
+    if (confirm('Are you sure ?')) {
+      this.setCodeEditorText(this.selectedQuestion.startingText);
+    }
+  }
 }
 
