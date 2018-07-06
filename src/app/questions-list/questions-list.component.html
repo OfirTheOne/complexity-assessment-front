@@ -1,8 +1,8 @@
 
 
-    <div class="card-columns mx-auto">
-        <div 
-        class="card h-100 m-2" 
+    <div class="card-columns mx-auto my-2">
+        <div
+        class="card effect6 h-100 m-2" 
         *ngFor = "let question of questions">
             <!-- <img class="card-img-top" src=".../100px200/" alt="Card image cap"> -->
             <div class="card-body question-card-body" (click)="onSelectQuestion(question)">
@@ -15,7 +15,7 @@
             </div>
             <div class="card-footer">
                 <small> Tags :</small> 
-                <span class="badge badge-warning m-1" *ngFor="let tag of question.tags">{{tag}}</span>    
+                <span class="badge badge-pill badge-dark badge-shadow text-center font-weight-normal pb-1 m-1" *ngFor="let tag of question.tags">{{tag}}</span>    
             </div>
         </div>
 

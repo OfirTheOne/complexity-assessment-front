@@ -23,6 +23,6 @@ export class QuestionsListComponent implements OnInit {
 
   onSelectQuestion(question: Question) {
     // console.log(question);
-    this.router.navigate(['/question', question.id ]);
+    this.router.navigate(['/question', question.id]);
   }
 }

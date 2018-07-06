@@ -47,8 +47,25 @@ export const questions: Question[] = [
         tags: ['sorting', 'arrays']
     },
     {
-        name: 'some questions',
+        name: 'Binary Search',
         id: '4',
+        description:
+        'given an array of sorted numbers, find the index of first appearance of the givan '
+        + 'value using binary search algorithm, in case the value is\'nt included in the array return -1.',
+        exemples: [
+            { input: 'array: [10, 30, 31, 75, 75, 90, 105], value: 75', output: '3' },
+            { input: 'array: [-2, -1, -1, 0, 5, 14], value: 3', output: '-1' }
+        ],
+        expectedComplexity: 'O(log(n))',
+        startingText:
+            `public Integer binarySearch(Integer[] array, Integer value) {
+
+}`,
+        tags: ['search', 'arrays']
+    },
+    {
+        name: 'some questions',
+        id: '0',
         description: '',
         exemples: [],
         expectedComplexity: '',
@@ -57,7 +74,7 @@ export const questions: Question[] = [
     },
     {
         name: 'some questions',
-        id: '4',
+        id: '0',
         description: '',
         exemples: [],
         expectedComplexity: '',
@@ -66,7 +83,7 @@ export const questions: Question[] = [
     },
     {
         name: 'some questions',
-        id: '4',
+        id: '0',
         description: '',
         exemples: [],
         expectedComplexity: '',
@@ -75,7 +92,7 @@ export const questions: Question[] = [
     },
     {
         name: 'some questions',
-        id: '4',
+        id: '0',
         description: '',
         exemples: [],
         expectedComplexity: '',
@@ -84,16 +101,7 @@ export const questions: Question[] = [
     },
     {
         name: 'some questions',
-        id: '4',
-        description: '',
-        exemples: [],
-        expectedComplexity: '',
-        startingText: '',
-        tags: []
-    },
-    {
-        name: 'some questions',
-        id: '4',
+        id: '0',
         description: '',
         exemples: [],
         expectedComplexity: '',
