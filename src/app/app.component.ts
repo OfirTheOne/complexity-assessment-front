@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from './../environments/environment';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,7 +11,13 @@ import { environment } from './../environments/environment';
 })
 export class AppComponent {
   title = 'app';
-  constructor() {
+  constructor(private router: Router) {
     console.log(`on ${environment.production ? 'prod' : 'dev'}.`);
+  }
+
+
+  onGoToHome() {
+    // console.log(question);
+    this.router.navigate(['/home']);
   }
 }

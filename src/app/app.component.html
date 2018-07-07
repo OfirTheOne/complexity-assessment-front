@@ -1,20 +1,39 @@
-
 <!-- header -->
-<nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mx-auto h1" > Hatoofie Questions</span>
+<nav class="navbar navbar-light navbar-fixed navbar-shadow bg-light" (click)="onGoToHome()">
+        <span class="navbar-brand mx-auto h1"> Hatoofie Questions</span>
 </nav>
 
+<div class="side-menu">
+        <a>
+                <div id="item1" class="side-menu-item">
+                        <span class="side-menu-item-text">HOME</span>
+                </div>
+        </a>
+
+        <a>
+                <div id="item2" class="side-menu-item">
+                        <span class="side-menu-item-text">TUTORIALS</span>
+                </div>
+        </a>
+
+        <a>
+                <div id="item3" class="side-menu-item">
+                        <span class="side-menu-item-text">ABOUT</span>
+                </div>
+        </a>
+</div>
+
 <!-- body -->
-<div class="container mt-4">
-    <div class="row justify-content-md-center">
-        <div class="col-10">
-                <router-outlet></router-outlet>
+<div class="container main-body">
+        <div class="row justify-content-md-center">
+                <div class="col-10">
+                        <router-outlet></router-outlet>
+                </div>
         </div>
-    </div>
 </div>
 
 <!-- bottom -->
 <nav class="navbar navbar-light bg-light mt-4 bottom-bar">
         <span class="navbar-brand mr-2 h1"> Hatoofie's Labs</span>
-        <span> Copyright © 2018 Hatooff  |  Contact Us  |  Frequently Asked Questions  |  Terms of Service  |  Privacy Policy</span>
+        <span> Copyright © 2018 Hatooff | Contact Us | Frequently Asked Questions | Terms of Service | Privacy Policy</span>
 </nav>

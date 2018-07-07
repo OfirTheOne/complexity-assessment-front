@@ -3,12 +3,20 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
+
+/* loading effects style */
+
 .transparent-bg .mat-dialog-container {
     background-color: transparent !important;
 }
 .no-shadow .mat-dialog-container {
     box-shadow: none;
 }
+
+
+
+/* fonts */
 
 @font-face {
     font-family: FjallaOneRegular;
@@ -18,4 +26,46 @@
 @font-face {
     font-family: RalewayRegular;
     src: url('./assets/font/Raleway/Raleway-Regular.ttf');
+}
+
+
+
+/* colors */
+
+:root {
+    --color-first: #C4DFE6; /* sea-foam */ 
+    --color-second: #66A5AB; /* wave */
+    --color-third: #07575B; /* ocean */
+    --color-fourth: #003B46; /* deep-aqua */
+
+}
+
+
+/* color theme classes */
+
+.text-color-first {
+    color: var(--color-first);
+}
+.text-color-second {
+    color: var(--color-second);
+}
+.text-color-third {
+    color: var(--color-third);
+}
+.text-color-fourth {
+    color: var(--color-fourth);
+}
+
+
+.bg-color-first {
+    background-color: var(--color-first);
+}
+.bg-color-second {
+    background-color: var(--color-second);
+}
+.bg-color-third {
+    background-color: var(--color-third);
+}
+.bg-color-fourth {
+    background-color: var(--color-fourth);
 }

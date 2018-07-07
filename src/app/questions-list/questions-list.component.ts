@@ -1,6 +1,6 @@
 import { Question } from './../../models/question.model';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 import { questions } from '../../data/questions';
