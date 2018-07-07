@@ -9,3 +9,13 @@
 .no-shadow .mat-dialog-container {
     box-shadow: none;
 }
+
+@font-face {
+    font-family: FjallaOneRegular;
+    src: url('./assets/font/Fjalla_One/FjallaOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: RalewayRegular;
+    src: url('./assets/font/Raleway/Raleway-Regular.ttf');
+}

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // angular matirial
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 
 
 // my components
@@ -36,6 +37,7 @@ import { ComplexityPipe } from '../pipes/complexity/complexity.pipe';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatListModule
   ],
   providers: [
     QuestionsService,

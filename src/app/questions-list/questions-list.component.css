@@ -46,10 +46,23 @@ div.question-card:hover {
 }
 
 
+.card-shadow {
+    box-shadow: 0px 1px 10px rgba( 0, 0, 0, 0.20 );
+}
+
 .badge-shadow {
     border-left: solid transparent; 
     border-right: solid transparent; 
     /* border-bottom: solid 70px #fff; */
     filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+  }
+
+  .card-header-font {
+    font-family: 'FjallaOneRegular', 'sans-serif';
+  }
+
+  .card-body-font {
+    font-family: 'RalewayRegular', sans-serif;
+
   }
 
