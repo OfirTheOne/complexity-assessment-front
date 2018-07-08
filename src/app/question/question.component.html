@@ -1,5 +1,5 @@
-
-<h2 class="display-3 mb-4" >{{selectedQuestion?.name}}</h2>
+<h2 class="display-3 mb-4">
+  {{selectedQuestion?.name}}</h2>
 
 <h4 class="lead">Description</h4>
 <p class="mb-4">
@@ -8,7 +8,7 @@
 
 <h4 class="lead">Complexity</h4>
 <p class="mb-4">
-    {{selectedQuestion?.expectedComplexity}}
+  {{selectedQuestion?.expectedComplexity}}
 </p>
 
 <h4 class="lead">Exemples</h4>
@@ -16,9 +16,10 @@
   <div *ngFor="let exemple of selectedQuestion?.exemples">
     <div class="exemple-block p-2 mb-2 w-75">
       <span class="exemple-text">
-          <!-- badge badge-secondary -->
-          <span class="font-weight-bold">Input</span> : {{exemple.input}}, <span class="font-weight-bold">Output</span> : {{exemple.output}}
-      </span> 
+        <!-- badge badge-secondary -->
+        <span class="font-weight-bold">Input</span> : {{exemple.input}},
+        <span class="font-weight-bold">Output</span> : {{exemple.output}}
+      </span>
     </div>
   </div>
 
@@ -29,8 +30,8 @@
 <!-- buttons -->
 <div>
   <button type="button" class="btn btn-light mr-2" (click)="onResetCodeEditor()">Reset</button>
-  <button type="button" class="btn btn-secondary mr-2">Run code</button>
-  <button type="button" class="btn btn-warning mr-2" (click)="onSubmitFinalCode()">Submit code</button>
+  <button type="button" class="btn btn-secondary mr-2" (click)="onBuildCode()">Build code</button>
+  <button type="button" class="btn btn-warning mr-2" (click)="onSubmitCode()">Submit code</button>
 </div>
 
 
@@ -40,20 +41,32 @@
 
 <!-- The result / error part -->
 
-<div *ngIf= "analysisResult != undefined">
+<div *ngIf="analysisResult != undefined">
   <hr class="m-4 pt-2">
   <!-- error -->
-  <div *ngIf= "analysisResult.isError">
-      <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Error</h2>
-    <p>{{analysisResult.result.errorMessage}}</p>
+  <div *ngIf="analysisResult.isError">
+    <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Error</h2>
+    <p class="errorPresent">{{analysisResult.result.errorMessage}}</p>
   </div>
 
   <!-- result -->
-  <div *ngIf= "!analysisResult.isError">
-      <h2 class="d-block p-2 bg-dark text-white lead">Result</h2>
-      <p>{{analysisResult.result.resultComplexity | complexity}}</p>
+  <div *ngIf="!analysisResult.isError">
+    <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Result</h2>
+    <p>{{analysisResult.result.resultComplexity | complexity}}</p>
 
   </div>
-  
+</div>
 
+
+<div *ngIf="compileOutput != undefined">
+  <hr class="m-4 pt-2">
+
+  <div *ngIf="compileOutput.pass">
+    <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Build Success</h2>
+  </div>
+
+  <div *ngIf="!compileOutput.pass" class="errorPresent">
+    <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Build Fail</h2>
+    <p class="errorPresent">{{compileOutput.msg}}</p>
+  </div>
 </div>

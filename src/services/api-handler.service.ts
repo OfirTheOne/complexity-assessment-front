@@ -8,6 +8,22 @@ export class ApiHandlerService {
 
     constructor(private http: HttpClient) { }
 
+    public async postCodeToCompile(questionId, code) {
+        const queryUrl = environment.api_url + 'analysis/' + 'compile/';
+        const requestBody = {
+            id: questionId,
+            code
+        };
+        try {
+            const res = await this.http.post(queryUrl, requestBody, { observe: 'response' }).toPromise();
+            console.log(res);
+            return res;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
     public async getAllQuestions() {
         const queryUrl = environment.api_url + 'questions/';
         try {
@@ -31,11 +47,7 @@ export class ApiHandlerService {
             return res;
         } catch (error) {
             console.log(error);
-            if (error.error && error.error.stderr) {
-                throw new Error(error.error.stderr);
-            } else {
-                throw error;
-            }
+            throw error;
         }
 
     }

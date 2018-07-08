@@ -24,6 +24,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
   selectedQuestion: Question;
   codeEditor; // Editor
   analysisResult: AnalysisResult;
+  compileOutput: {pass: boolean, msg: string};
 
   constructor(
     private route: ActivatedRoute,
@@ -68,7 +69,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     // this.codeEditor.selection.$isEmpty = true;
   }
 
-  public async onSubmitFinalCode() {
+  public async onSubmitCode() {
     const code = this.codeEditor.getValue();
     const id = this.selectedQuestion.id;
 
@@ -76,12 +77,12 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     try {
       const res = await this.apiHandler.postQuestionCode(id, code);
       loadingDialogRef.close();
-      this.setAnalysisResult(res.body['data'], false);
+      this.setAnalysisResult(res.body['data']);
       console.log(res);
 
     } catch (error) {
       loadingDialogRef.close();
-      this.setAnalysisResult(error, true);
+      // this.setAnalysisResult(error, true);
       console.log(error);
     }
   }
@@ -97,22 +98,22 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     return dialogRef;
   }
 
-  private setAnalysisResult(serverRes: any, isError: boolean) {
+  private setAnalysisResult(serverRes: any) {
 
-    if (!isError) {
+    if (!serverRes['stderr']) {
       this.analysisResult = {
         result: {
           samples : serverRes.samples,
           resultComplexity: serverRes.complexity
         },
-        isError
+        isError: false
       };
     } else {
       this.analysisResult = {
         result: {
-          errorMessage: serverRes
+          errorMessage: serverRes['stderr']
         },
-        isError
+        isError: true
       };
     }
   }
@@ -121,6 +122,30 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
     if (confirm('Are you sure ?')) {
       this.setCodeEditorText(this.selectedQuestion.startingText);
+    }
+  }
+
+  public async onBuildCode() {
+    const code = this.codeEditor.getValue();
+    const id = this.selectedQuestion.id;
+
+    const loadingDialogRef = this.openLoadingDialog();
+    try {
+      const res = await this.apiHandler.postCodeToCompile(id, code);
+      const stderr = res.body['data'] ? res.body['data'].stderr : undefined;
+      if (stderr) {
+        this.compileOutput = { pass : false, msg : stderr};
+
+      } else {
+        this.compileOutput = { pass : true, msg : ''};
+      }
+      loadingDialogRef.close();
+      console.log(res);
+
+    } catch (error) {
+      console.log(error);
+      this.compileOutput = { pass : false, msg : error};
+      loadingDialogRef.close();
     }
   }
 }
