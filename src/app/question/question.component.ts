@@ -49,7 +49,13 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
   private createCodeEditorElement(): any {
     this.codeEditor = window['ace'].edit(document.getElementById('codeEditor'));
+    const lt = window['ace'].require('ace/ext/language_tools');
+    console.log(lt);
     this.codeEditor.setTheme('ace/theme/github');
+    this.codeEditor.setOptions({ // for editor resize and fit the contant
+      maxLines: Infinity,
+      enableBasicAutocompletion: true
+    });
     this.codeEditor.getSession().setMode('ace/mode/java');
     this.codeEditor.setShowFoldWidgets(true);
   }
