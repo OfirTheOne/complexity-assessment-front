@@ -1,24 +1,53 @@
+<ul class="mx-auto my-2">
+    <div *ngFor="let question of questions" class="m-4 mx-auto">
+
+        <div class="row">
 
 
-    <ul class="mx-auto my-2">
-        <div
-        class="card card-shadow w-75 h-100 m-4 mx-auto" 
-        *ngFor = "let question of questions">
-            <div class="card-body question-card-body" (click)="onSelectQuestion(question)">
-              <h5 class="card-title card-header-font">{{question.name}}</h5>
-              <p class="card-text card-body-font">{{question.description}}</p>
-              <p class="card-text card-body-font">
-                  <small class="text-muted">
-                  Last updated 3 mins ago
-                </small></p>
+            <div class="col-8 px-1">
+                <div class="card question-card card-shadow">
+                    <div class="card-body question-card-body" (click)="onSelectQuestion(question)">
+                        <h5 class="card-title card-header-font">{{question.name}}</h5>
+                        <p class="card-text card-body-font question-description">
+                            {{question.description}}</p>
+
+                    </div>
+                    <div class="card-footer card-body-font">
+                        <small> Tags :</small>
+                        <span class="badge badge-pill badge-dark badge-shadow text-center font-weight-normal pb-1 m-1" *ngFor="let tag of question.tags">{{tag}}</span>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer card-body-font">
-                <small> Tags :</small> 
-                <span class="badge badge-pill badge-dark badge-shadow text-center font-weight-normal pb-1 m-1" *ngFor="let tag of question.tags">{{tag}}</span>    
+            <div class="col-4 px-1">
+                <div class="card side-card card-shadow text-center">
+                    <div class="card-body">
+                        <p>
+                            <mat-icon class="m-2">favorite_border</mat-icon>
+                            <mat-icon class="m-2">check_circle_outline</mat-icon>
+                            <mat-icon class="m-2">outlined_flag</mat-icon>
+                        </p>
+                        <p class="card-text card-body-font">
+                            Difficulty
+                            <span class="badge badge-pill 
+                            badge-info text-center 
+                            font-weight-normal pb-1 m-1">Medium</span>
+                        </p>
+                        <p class="card-text card-body-font">
+                            <small class="text-muted">
+                                Last updated 3 mins ago
+                            </small>
+                        </p>
+                    </div>
+                </div>
             </div>
+
+
         </div>
 
-    </ul>
+
+
+    </div>
+</ul>
 <!-- 
         <div>
             <mat-list>
