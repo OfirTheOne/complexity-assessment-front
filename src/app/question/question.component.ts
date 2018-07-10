@@ -1,3 +1,4 @@
+import { SnackbarService } from './../../services/snackbar.service';
 import { AnalysisResult } from './../../models/analysis-result.model';
 import { Question } from './../../models/question.model';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
@@ -23,12 +24,14 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
   selectedQuestion: Question;
   codeEditor; // Editor
+
   analysisResult: AnalysisResult;
-  compileOutput: {pass: boolean, msg: string};
+  compileResult: {pass: boolean, msg: string};
 
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    private snackbar: SnackbarService,
     private questionsService: QuestionsService,
     private apiHandler: ApiHandlerService
   ) { }
@@ -70,22 +73,25 @@ export class QuestionComponent implements OnInit, AfterViewInit {
   public async onSubmitCode() {
     const code = this.codeEditor.getValue();
     const id = this.selectedQuestion.id;
-
+    this.snackbar.openSnackBar('Analysist request sent.');
     const loadingDialogRef = this.openLoadingDialog();
     try {
       const res = await this.apiHandler.postCodeToAnalysis(id, code);
       loadingDialogRef.close();
+      this.snackbar.openSnackBar('Analysis request finished.');
       this.setAnalysisResult(res.body['data']);
       console.log(res);
 
     } catch (error) {
       loadingDialogRef.close();
+      this.snackbar.openSnackBar('Analysis request failed.');
       // this.setAnalysisResult(error, true);
       console.log(error);
     }
   }
 
   private setAnalysisResult(serverRes: any) {
+    this.compileResult = undefined; // undisplay the build result part
     if (!serverRes['stderr']) {
       this.analysisResult = {
         result: {
@@ -108,23 +114,27 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     const code = this.codeEditor.getValue();
     const id = this.selectedQuestion.id;
 
+    this.snackbar.openSnackBar('Build request sent.');
     const loadingDialogRef = this.openLoadingDialog();
     try {
       const res = await this.apiHandler.postCodeToCompile(id, code);
       const stderr = res.body['data'] ? res.body['data'].stderr : undefined;
       if (stderr) {
-        this.compileOutput = { pass : false, msg : stderr};
+        this.compileResult = { pass : false, msg : stderr};
 
       } else {
-        this.compileOutput = { pass : true, msg : ''};
+        this.compileResult = { pass : true, msg : ''};
       }
       loadingDialogRef.close();
+      this.snackbar.openSnackBar('Build request finished.');
       console.log(res);
 
     } catch (error) {
       console.log(error);
-      this.compileOutput = { pass : false, msg : error};
+      this.compileResult = { pass : false, msg : error};
       loadingDialogRef.close();
+      this.snackbar.openSnackBar('Build request failed.');
+
     }
   }
 

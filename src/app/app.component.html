@@ -1,14 +1,32 @@
 <!-- header -->
-<nav class="navbar navbar-light navbar-fixed navbar-shadow navbar-bg" (click)="onGoToHome()">
-        <span class="navbar-brand text-bold mx-4"> Hatoofie Questions</span>
+<nav class="navbar navbar-light navbar-fixed navbar-shadow navbar-bg">
+        <!-- logo -->
+        <span class="navbar-brand text-bold mx-4" (click)="onGoToHome()"> Hatoofie Questions</span>
+
+        <!-- other buttons -->
         <div class="mx-4 pr-4">
-                <span class="p-1 px-2"> <button mat-button>Home</button></span>
+                <span class="p-1 px-2">
+                        <button mat-button (click)="onGoToHome()">Home</button>
+                </span>
                 <span class="border-left border-dark py-1"></span>
-                <span class="p-1 px-2"> <button mat-button>Questions</button></span>
+                <span class="p-1 px-2">
+                        <button mat-button>Questions</button>
+                </span>
                 <span class="border-left border-dark py-1"></span>
-                <span class="p-1 px-2"> <button mat-button>How To</button></span>
+                <span class="p-1 px-2">
+                        <button mat-button (click)="onGoToHowTo()">How To</button>
+                </span>
                 <span class="border-left border-dark py-1"></span>
-                <span class="p-1 px-2"> <button mat-button>About Us</button></span>
+                <span class="p-1 px-2">
+                        <button mat-button>About Us</button>
+                </span>
+                <span class="p-1 px-4">
+                        <button mat-fab>
+                                <mat-icon aria-label="icon-button icon">
+                                        person_outline
+                                </mat-icon>
+                        </button>
+                </span>
         </div>
 </nav>
 

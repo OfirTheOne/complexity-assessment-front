@@ -20,6 +20,18 @@ span.navbar-brand {
 background-color: rgba(248, 249, 250, 0.8);
 }
 
+
+/* account iocon button */
+.mat-fab:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.mat-fab.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+  background-color: #dedede;
+}
+
+
+
 /* body */
 
 .main-body {

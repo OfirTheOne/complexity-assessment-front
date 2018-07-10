@@ -69,3 +69,6 @@
 .bg-color-fourth {
     background-color: var(--color-fourth);
 }
+
+
+.snackbarText { color: white !important; }

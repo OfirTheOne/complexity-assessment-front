@@ -6,7 +6,7 @@
   {{selectedQuestion?.description}}
 </p>
 
-<h4 class="lead">Complexity</h4>
+<h4 class="lead">Expected Complexity</h4>
 <p class="mb-4">
   {{selectedQuestion?.expectedComplexity}}
 </p>
@@ -59,16 +59,16 @@
 </div>
 
 
-<div *ngIf="compileOutput != undefined">
+<div *ngIf="compileResult != undefined">
   <hr class="m-4 pt-2">
 
-  <div *ngIf="compileOutput.pass">
+  <div *ngIf="compileResult.pass">
     <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Build Success</h2>
   </div>
 
-  <div *ngIf="!compileOutput.pass" class="errorPresent">
+  <div *ngIf="!compileResult.pass" class="errorPresent">
     <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Build Fail</h2>
-    <p class="border errorPresent">{{compileOutput.msg}}</p>
+    <p class="border errorPresent">{{compileResult.msg}}</p>
   </div>
   
 </div>

@@ -15,9 +15,11 @@ export class AppComponent {
     console.log(`on ${environment.production ? 'prod' : 'dev'}.`);
   }
 
-
   onGoToHome() {
-    // console.log(question);
     this.router.navigate(['/home']);
+  }
+
+  onGoToHowTo() {
+    this.router.navigate(['/howto']);
   }
 }
