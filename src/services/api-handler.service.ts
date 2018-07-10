@@ -35,7 +35,7 @@ export class ApiHandlerService {
         }
     }
 
-    public async postQuestionCode(questionId: string, code: string) {
+    public async postCodeToAnalysis(questionId: string, code: string) {
         const queryUrl = environment.api_url + 'analysis/';
         const requestBody = {
             id: questionId,

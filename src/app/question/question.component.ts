@@ -44,9 +44,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
-    // this.openLoadingDialog();
-   }
+  ngAfterViewInit() { }
 
   private createCodeEditorElement(): any {
     this.codeEditor = window['ace'].edit(document.getElementById('codeEditor'));
@@ -75,7 +73,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
     const loadingDialogRef = this.openLoadingDialog();
     try {
-      const res = await this.apiHandler.postQuestionCode(id, code);
+      const res = await this.apiHandler.postCodeToAnalysis(id, code);
       loadingDialogRef.close();
       this.setAnalysisResult(res.body['data']);
       console.log(res);
@@ -87,19 +85,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-  private openLoadingDialog(): MatDialogRef<LoadingComponent, any> {
-    const dialogRef = this.dialog.open(LoadingComponent, {
-      autoFocus: true,
-      disableClose: true,
-      panelClass: ['transparent-bg', 'no-shadow'],
-      width: '250px',
-    });
-    return dialogRef;
-  }
-
   private setAnalysisResult(serverRes: any) {
-
     if (!serverRes['stderr']) {
       this.analysisResult = {
         result: {
@@ -115,13 +101,6 @@ export class QuestionComponent implements OnInit, AfterViewInit {
         },
         isError: true
       };
-    }
-  }
-
-  public onResetCodeEditor() {
-
-    if (confirm('Are you sure ?')) {
-      this.setCodeEditorText(this.selectedQuestion.startingText);
     }
   }
 
@@ -148,5 +127,23 @@ export class QuestionComponent implements OnInit, AfterViewInit {
       loadingDialogRef.close();
     }
   }
+
+  public onResetCodeEditor() {
+
+    if (confirm('Are you sure ?')) {
+      this.setCodeEditorText(this.selectedQuestion.startingText);
+    }
+  }
+
+  private openLoadingDialog(): MatDialogRef<LoadingComponent, any> {
+    const dialogRef = this.dialog.open(LoadingComponent, {
+      autoFocus: true,
+      disableClose: true,
+      panelClass: ['transparent-bg', 'no-shadow'],
+      width: '250px',
+    });
+    return dialogRef;
+  }
+
 }
 

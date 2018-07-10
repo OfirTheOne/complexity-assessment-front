@@ -43,18 +43,19 @@
 
 <div *ngIf="analysisResult != undefined">
   <hr class="m-4 pt-2">
+
   <!-- error -->
   <div *ngIf="analysisResult.isError">
     <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Error</h2>
-    <p class="errorPresent">{{analysisResult.result.errorMessage}}</p>
+    <p class="border errorPresent">{{analysisResult.result.errorMessage}}</p>
   </div>
 
   <!-- result -->
   <div *ngIf="!analysisResult.isError">
     <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Result</h2>
     <p>{{analysisResult.result.resultComplexity | complexity}}</p>
-
   </div>
+
 </div>
 
 
@@ -67,6 +68,7 @@
 
   <div *ngIf="!compileOutput.pass" class="errorPresent">
     <h2 class="d-block p-2 bg-dark text-white font-weight-bold lead">Build Fail</h2>
-    <p class="errorPresent">{{compileOutput.msg}}</p>
+    <p class="border errorPresent">{{compileOutput.msg}}</p>
   </div>
+  
 </div>

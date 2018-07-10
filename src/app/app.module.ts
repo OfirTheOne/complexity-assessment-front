@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 
 // my components
@@ -39,7 +40,8 @@ import { ComplexityPipe } from '../pipes/complexity/complexity.pipe';
     AppRoutingModule,
     MatDialogModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     QuestionsService,
