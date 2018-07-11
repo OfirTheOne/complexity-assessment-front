@@ -31,7 +31,8 @@ export class ComplexityPipe implements PipeTransform {
         return 'O(n ^3)';
 
       default:
-      return null;
+        return 'Error occurred while assessing the complexity of your code, <br>' +
+        'please review your code for any possible runtime errors.';
 
     }
   }
